@@ -748,3 +748,24 @@ a,button,input,select{font:inherit}.container{width:min(var(--max),calc(100% - 4
 
 /* Static hosting fallback: content remains readable even when reveal observers are delayed. */
 body.reveal-ready .reveal{opacity:1;transform:none}
+
+.job-share{display:block}
+.job-share-social,.job-share-links{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.job-share-links{margin-top:10px;padding-top:10px;border-top:1px solid #edf1f4}
+.job-share-icon{display:inline-grid;place-items:center;width:28px;height:28px!important;padding:0!important;border:1px solid #cbdce8!important;border-radius:7px;background:#f4f8fb!important;color:var(--brand)!important;font-size:16px!important}
+.job-share-icon:hover{border-color:var(--brand)!important;background:#eaf3f9!important}
+.job-share{display:grid;grid-template-columns:auto auto auto 1fr;row-gap:8px;column-gap:10px;align-items:center}
+.job-share>span{grid-column:1;grid-row:1}
+.job-share>button[data-share-facebook]{grid-column:2;grid-row:1}
+.job-share>button[data-share-linkedin]{grid-column:3;grid-row:1}
+.job-share>button[data-copy-job]{grid-column:1 / span 2;grid-row:2}
+.job-share>a{grid-column:3 / -1;grid-row:2}
+.job-share>button[data-share-facebook] i,.job-share>button[data-share-linkedin] i{display:block}
+@media(max-width:680px){.job-share{grid-template-columns:auto auto 1fr}.job-share>a{grid-column:1 / -1;grid-row:3}.job-share>button[data-copy-job]{grid-column:1 / -1}}
+.drawer-actions>div{display:grid;grid-template-columns:auto auto auto 1fr;gap:10px;align-items:center}
+.drawer-actions>div>button[data-share]{grid-column:2;grid-row:1}
+.drawer-actions>div>button[data-share-linkedin-drawer]{grid-column:3;grid-row:1}
+.drawer-actions>div>button[data-copy]{grid-column:1 / span 2;grid-row:2;margin-top:10px}
+.drawer-actions>div>a{grid-column:3 / -1;grid-row:2;margin-top:10px}
+.drawer-actions>div .job-share-icon{margin:0!important}
+@media(max-width:680px){.drawer-actions>div{grid-template-columns:auto auto 1fr}.drawer-actions>div>button[data-copy]{grid-column:1 / -1}.drawer-actions>div>a{grid-column:1 / -1;grid-row:3}}
