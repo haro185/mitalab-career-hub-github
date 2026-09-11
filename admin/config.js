@@ -2,7 +2,7 @@
 window.MITALAB_AUTH = {
   mode: 'local',
   email: 'admin@mitalab.com',
-  password: 'Mitalab@2026!'
+  password: '1'
 };
 
 /* Used only when mode is changed to "supabase". Never place service_role here. */
