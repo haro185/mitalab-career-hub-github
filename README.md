@@ -10,6 +10,15 @@ mitalab-career-hub-github/
 ├─ styles.css
 ├─ script.js
 ├─ .nojekyll
+├─ admin/
+│  ├─ index.html
+│  ├─ login/index.html
+│  ├─ admin.css
+│  ├─ admin.js
+│  └─ config.js
+└─ supabase/
+   ├─ migrations/001_career_hub.sql
+   └─ seed/001_current_site.sql
 └─ assets/
    └─ logo-mark.svg
 ```
@@ -83,6 +92,30 @@ Khi đưa thành website tuyển dụng production cần nối:
 - Tracking/analytics
 - Consent & privacy notice chính thức
 - Domain/custom domain nếu cần
+
+## Admin CMS
+
+Admin hiện chạy local-only tại `/admin/`, đăng nhập tại `/admin/login/` bằng account cấu hình trong `admin/config.js` (hiện tại là `admin@mitalab.com`, password `Mitalab@2026!`). Đổi password trước khi dùng nội bộ. Job local được lưu trong trình duyệt bằng `localStorage`.
+
+Supabase vẫn được giữ làm backend tùy chọn cho phase production. Khi chuyển sang backend thật, đổi `window.MITALAB_AUTH.mode` thành `supabase`, điền `url` và `anonKey`; không đặt service role key trong repository hoặc browser.
+
+### Local development
+
+1. Chạy `python -m http.server 8000` từ thư mục root.
+2. Mở `http://localhost:8000/admin/login/`.
+3. Đăng nhập bằng account local trong `admin/config.js`.
+
+Khi cần dùng Supabase, chạy thêm migration và seed, tạo user trong Supabase Authentication, sau đó thêm profile tương ứng với role `admin` trong bảng `profiles`.
+
+Public Hub có thể dùng `public-config.js` với `mode: 'supabase'`, `url` và `anonKey` để đọc nội dung đã publish. Khi giữ `mode: 'local'`, public tiếp tục dùng snapshot/localStorage để phát triển local.
+
+### Email thật khi deploy
+
+EmailJS chỉ phù hợp để test frontend. Production nên dùng function `supabase/functions/send-application-email/index.ts` với Resend. Đặt `RESEND_API_KEY`, `MAIL_FROM` và `RECRUITMENT_EMAIL` bằng Supabase Function Secrets; không đưa các giá trị này vào `admin/config.js`, GitHub Pages hoặc browser.
+
+Workflow CMS được lưu trong migration `002_cms_workflow.sql`: revision history, preview tokens, email settings và email logs. Draft không được public policy đọc; chỉ record `published` mới xuất hiện trên Career Hub.
+
+GitHub Pages chỉ chứa anon key và frontend. Service role key chỉ dùng trong môi trường server/SQL migration bảo mật. Khi deploy admin trên Vercel hoặc Netlify, giữ cùng cấu trúc `/admin/` và cấu hình public Supabase values qua build/deployment environment.
 
 ## Chỉnh nội dung
 

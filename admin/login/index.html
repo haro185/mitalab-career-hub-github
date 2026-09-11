@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Đăng nhập Admin | Mitalab Career Hub</title>
+  <link rel="icon" href="../../assets/logo-mark.png" />
+  <link rel="stylesheet" href="../admin.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="login-body">
+  <main class="login-shell">
+    <section class="login-brand"><img src="../../assets/logo-mark.png" alt="Mitalab" /><span>MITALAB CAREER HUB</span></section>
+    <section class="login-card" aria-labelledby="loginTitle">
+      <div class="eyebrow">CONTENT MANAGEMENT SYSTEM</div>
+      <h1 id="loginTitle">Đăng nhập</h1>
+      <p class="login-intro">Quản trị nội dung Career Hub của Mitalab.</p>
+      <form id="loginForm" class="login-form">
+        <label for="email">Email</label><input id="email" name="email" type="email" autocomplete="username" required placeholder="you@mitalab.com" />
+        <label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" required placeholder="Nhập mật khẩu" />
+        <button class="primary-button" type="submit">Đăng nhập <span>→</span></button>
+        <p id="loginMessage" class="form-message" role="alert"></p>
+      </form>
+      <button id="forgotPassword" class="text-link" type="button">Quên mật khẩu?</button>
+      <div id="setupNotice" class="setup-notice" hidden>Supabase chưa được cấu hình. Hãy điền URL và anon key trong <strong>admin/config.js</strong> trước khi đăng nhập.</div>
+    </section>
+    <a class="back-public" href="../../index.html">← Quay lại Career Hub</a>
+  </main>
+  <script src="../config.js"></script>
+  <script src="../client.js"></script>
+  <script src="../auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Admin CMS | Mitalab Career Hub</title>
+  <link rel="icon" href="../assets/logo-mark.png" />
+  <link rel="stylesheet" href="admin.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="admin-body">
+  <div id="adminApp" class="admin-app" hidden>
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="admin-brand"><img src="../assets/logo-mark.png" alt="Mitalab" /><div><strong>MITALAB</strong><span>CAREER HUB CMS</span></div></div>
+      <nav class="admin-nav" aria-label="Quản trị nội dung">
+        <button class="nav-item active" data-view="dashboard"><span class="nav-icon">▦</span>Dashboard</button>
+        <button class="nav-item" data-view="jobs"><span class="nav-icon">▣</span>Việc làm</button>
+        <button class="nav-item" data-view="categories"><span class="nav-icon">⌘</span>Nhóm nghề</button>
+        <button class="nav-item" data-view="stories"><span class="nav-icon">▤</span>Câu chuyện nghề nghiệp</button>
+        <button class="nav-item" data-view="environment"><span class="nav-icon">◫</span>Môi trường &amp; phát triển</button>
+        <button class="nav-item" data-view="journey"><span class="nav-icon">↝</span>Quy trình tuyển dụng</button>
+        <button class="nav-item" data-view="faq"><span class="nav-icon">?</span>FAQ</button>
+        <button class="nav-item" data-view="talent"><span class="nav-icon">♧</span>Talent Community</button>
+        <div class="nav-divider"></div>
+        <button class="nav-item" data-view="homepage"><span class="nav-icon">⌂</span>Trang chủ</button>
+        <button class="nav-item" data-view="contacts"><span class="nav-icon">✆</span>Thông tin liên hệ</button>
+        <button class="nav-item" data-view="media"><span class="nav-icon">▧</span>Media Library</button>
+        <button class="nav-item" data-view="users"><span class="nav-icon">♙</span>Người dùng</button>
+        <button class="nav-item" data-view="settings"><span class="nav-icon">⚙</span>Cài đặt</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <a href="../index.html" target="_blank" rel="noreferrer" class="sidebar-link">Xem Career Hub <span>↗</span></a>
+        <button id="logoutButton" class="sidebar-link sidebar-logout">Đăng xuất <span>⇥</span></button>
+      </div>
+    </aside>
+
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <button id="sidebarToggle" class="icon-button mobile-only" aria-label="Mở menu">☰</button>
+        <div><span class="topbar-context">MITALAB CAREER HUB</span><strong id="pageTitle">Dashboard</strong></div>
+        <div class="topbar-actions"><span id="connectionStatus" class="connection-status">Đang kiểm tra kết nối</span><span id="userEmail" class="user-email"></span><button id="userMenuButton" class="avatar-button" aria-label="Tài khoản">A</button></div>
+      </header>
+      <main id="adminContent" class="admin-content"></main>
+    </div>
+  </div>
+  <div id="toast" class="admin-toast" role="status" aria-live="polite"></div>
+  <script src="config.js"></script>
+  <script src="client.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
